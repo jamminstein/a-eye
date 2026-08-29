@@ -33,6 +33,19 @@ node tools/make-placeholder.mjs eye.mp4
 12 s, 25 fps, 1280×720. All motion (pupil hippus, two blinks) is periodic over
 the clip length, so it loops seamlessly.
 
+## Type
+
+The line "What do you feel?" is set in AUTHENTIC Sans 90 (`fonts/AUTHENTICSans-90.woff2`,
+10 KB), by AUTHENTIC, distributed under the WTFPL — self-hosting is unrestricted.
+Size is fluid: `clamp(13px, 1.5vw, 18px)`, pinned to the bottom above the iOS safe area.
+
+## Framing
+
+The video uses `object-fit: cover` on landscape viewports and switches to `contain`
+below a 3:2 aspect ratio. On a tall phone `cover` crops a 16:9 clip so hard that the
+eyes fall off the sides; the clip is on black, so `contain` letterboxes invisibly.
+If your real clip is framed tighter or wider, that 3:2 threshold is the knob to turn.
+
 ## Custom domain
 
 Add a `CNAME` file containing the bare hostname, then at your registrar point
