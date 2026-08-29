@@ -9,6 +9,7 @@
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="favicon.svg">
 <link rel="preload" href="fonts/AUTHENTICSans-90.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="grain.png" as="image">
 <meta property="og:title" content="A-eye">
 <meta property="og:description" content="A continuous AI stare.">
 <meta property="og:type" content="website">
@@ -53,6 +54,44 @@
     #stare { object-fit: contain; }
   }
 
+  /* Film grain is laid over the video rather than baked into it. Encoded in,
+     synthetic noise is near-incompressible: at any web-sized bitrate the codec
+     spends its budget on the noise and returns macroblocking instead of grain.
+     Overlaying keeps both the image and the grain sharp, and costs 70 KB. */
+  #grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('grain.png');
+    background-repeat: repeat;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    will-change: transform;
+    animation: grain-shift 0.7s steps(1) infinite;
+  }
+
+  /* Eight discrete offsets read as per-frame grain churn without ever
+     interpolating, which is what makes it look photochemical. */
+  @keyframes grain-shift {
+    0%   { transform: translate3d(0, 0, 0); }
+    12.5%{ transform: translate3d(-7%, 4%, 0); }
+    25%  { transform: translate3d(5%, -9%, 0); }
+    37.5%{ transform: translate3d(-11%, -3%, 0); }
+    50%  { transform: translate3d(9%, 6%, 0); }
+    62.5%{ transform: translate3d(-4%, 11%, 0); }
+    75%  { transform: translate3d(12%, -6%, 0); }
+    87.5%{ transform: translate3d(-9%, -11%, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
+  /* Keep the texture, drop the churn. */
+  @media (prefers-reduced-motion: reduce) {
+    #grain { animation: none; }
+  }
+
   #ask {
     position: fixed;
     left: 50%;
@@ -83,6 +122,7 @@
        tabindex="-1"
        aria-label="Two eyes, watching."
        src="eye.mp4"></video>
+<div id="grain" aria-hidden="true"></div>
 <p id="ask">What do you feel?</p>
 <script>
 (function () {
