@@ -53,25 +53,29 @@ The overlay is `grain.png` (256×256 tiling noise, 70 KB) on a fixed 200% layer 
 `steps(1)` so it churns per frame instead of sliding. Reduced-motion viewers keep
 the texture and lose the churn. To change intensity, edit `#grain { opacity }`.
 
-## The loop, and the plunge
+## The loop, and the cuts
 
 The source clip has no natural loop -- the eye drifts continuously and never
 returns to its opening position. Looped raw the seam measured 12.6 dB PSNR
 against a 37.4 dB adjacent-frame control, and a frame-by-frame search found no
 better cut point anywhere in the clip (best candidate 15.6 dB).
 
-So the loop point is manufactured rather than found. `tools/plunge.sh` dives 5x
-into the pupil over the last 1.3 s, fading to black as it goes, and mirrors that
-move at the head -- the clip opens inside the black pupil and pulls back out.
-Both end frames are pure black (mean luma 0.00), so the loop point is exact and
-the motion reads as one continuous plunge in and out.
+`tools/pingpong.sh` solves it structurally instead of hiding it: the clip plays
+forward, then reversed, forever. Forward ends on frame N-1 and the reverse
+begins on N-2, so both the turnaround and the loop wrap are ordinary
+adjacent-frame steps. Measured: loop wrap 34.4 dB, turnaround 50.4 dB, against a
+37.9 dB adjacent-frame control. No fade, no crossfade, no softening anywhere.
 
-Not a crossfade: nothing dissolves through anything. The darkness is where the
-dive ends up.
+The duplicated end frames matter: without dropping them the turnaround and the
+wrap each stutter on a repeated frame.
 
-`poster.jpg` is therefore a black frame, which is correct -- it matches frame 0,
-so there is no flash before playback. `share.jpg` is a separate mid-clip frame
-used for `og:image`.
+On top of that, hard cuts punch in to 3x on the pupil -- two quick in-and-out
+punches while the eye faces camera, mirrored in the reverse pass. Instant cuts,
+no easing. `ZOOM`, `CUT_X`/`CUT_Y` and `CUTS` (the window expression) are all
+overridable.
+
+Doubling the clip doubles the payload: 66 s, 20 MB. `+faststart` means it starts
+playing before it finishes downloading, and `poster.jpg` covers the gap.
 
 ## Framing
 
