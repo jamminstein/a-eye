@@ -53,32 +53,30 @@ The overlay is `grain.png` (256×256 tiling noise, 70 KB) on a fixed 200% layer 
 `steps(1)` so it churns per frame instead of sliding. Reduced-motion viewers keep
 the texture and lose the churn. To change intensity, edit `#grain { opacity }`.
 
-## The loop, and the dive
+## The loop, and the plunge
 
-The source has a slow push-in, so its first and last frames don't match: looped raw
-it snapped back visibly every cycle (20.3 dB PSNR first-vs-last). Two edits fix and
-extend it, both applied to the original before grading, in `tools/loop.sh`:
+The source clip has no natural loop -- the eye drifts continuously and never
+returns to its opening position. Looped raw the seam measured 12.6 dB PSNR
+against a 37.4 dB adjacent-frame control, and a frame-by-frame search found no
+better cut point anywhere in the clip (best candidate 15.6 dB).
 
-1. **Crossfade** — the last second dissolves into the first. Output starts and ends
-   on the same moment, so `<video loop>` is continuous. Duration 21.0 s -> 20.0 s.
-2. **Eye dive** — at 8 s the frame pushes into the right eye over 0.7 s, holds 1 s,
-   and pulls back out, on a smoothstep ease.
+So the loop point is manufactured rather than found. `tools/plunge.sh` dives 5x
+into the pupil over the last 1.3 s, fading to black as it goes, and mirrors that
+move at the head -- the clip opens inside the black pupil and pulls back out.
+Both end frames are pure black (mean luma 0.00), so the loop point is exact and
+the motion reads as one continuous plunge in and out.
 
-Measured seam after both: 30.5 dB, against 28.6-32.0 dB for ordinary adjacent
-frames in the same clip. The loop point is within normal frame-to-frame variation.
+Not a crossfade: nothing dissolves through anything. The darkness is where the
+dive ends up.
 
-The dive is driven by `scale` (eval=frame) feeding a fixed-size `crop`, not by
-`zoompan` — zoompan mispositioned the window, and `crop`'s `in_w`/`in_h` are
-evaluated once at init, so the clamp bounds must be written as explicit
-expressions or x/y pin to the top-left corner.
-
-## Type
-
-The line "What do you feel?" is set in AUTHENTIC Sans 90 (`fonts/AUTHENTICSans-90.woff2`,
-10 KB), by AUTHENTIC, distributed under the WTFPL — self-hosting is unrestricted.
-Size is fluid: `clamp(13px, 1.5vw, 18px)`, pinned to the bottom above the iOS safe area.
+`poster.jpg` is therefore a black frame, which is correct -- it matches frame 0,
+so there is no flash before playback. `share.jpg` is a separate mid-clip frame
+used for `og:image`.
 
 ## Framing
+
+There is no text on the page. `fonts/AUTHENTICSans-90.woff2` is kept in the repo
+for if type ever returns, but nothing references it.
 
 The video uses `object-fit: cover` on landscape viewports and switches to `contain`
 below a 3:2 aspect ratio. On a tall phone `cover` crops a 16:9 clip so hard that the
