@@ -71,6 +71,22 @@ wrap each stutter on a repeated frame.
 Doubling the clip doubles the payload: 66 s, ~20 MB. `+faststart` means playback
 starts before the download finishes, and `poster.jpg` covers the gap.
 
+## Favicon
+
+`favicon.gif` is the eye itself: a 64×64 cut of the wide shot from 12.0 s to the
+lid closing at 15.4 s, then the same frames in reverse so it opens again -- the
+ping-pong trick at favicon scale, so the loop has no seam. 80 frames at 12 fps,
+64 greys, about 230 KB. Only Firefox animates favicons; Chrome and Safari show
+the first frame, which is the open eye. Regenerate it after replacing the video:
+
+```bash
+tools/favicon.sh
+```
+
+The crop (`CROP=900:900:600:180`, a square around the iris in the 1080p frame)
+and the in and out points (`START`, `END`) are the knobs if the new clip is
+framed or timed differently.
+
 ## Framing
 
 There is no text on the page. `fonts/AUTHENTICSans-90.woff2` is kept in the repo
