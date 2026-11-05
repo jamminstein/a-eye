@@ -1,6 +1,6 @@
 # A-eye
 
-A continuous AI stare. One page, black, two eyes looking at you. Nothing else.
+A continuous AI stare. One page, black, an eye looking at you, and one line: *What are you looking at?*
 
 Live: https://jamminstein.github.io/a-eye/
 
@@ -89,8 +89,11 @@ framed or timed differently.
 
 ## Framing
 
-There is no text on the page. `fonts/AUTHENTICSans-90.woff2` is kept in the repo
-for if type ever returns, but nothing references it.
+The page has one line of type, "What are you looking at?", set in
+`fonts/AUTHENTICSans-90.woff2`. It sits low, on the lower lid, clear of the pupil,
+and fades in 6 s after load (reduced-motion viewers get it immediately). It is in
+the DOM just before the grain layer, so the grain is drawn over it too.
+Edit `#ask` to move or restyle it.
 
 The video uses `object-fit: cover` on landscape viewports and switches to `contain`
 below a 3:2 aspect ratio. On a tall phone `cover` crops a 16:9 clip so hard that the
