@@ -4,7 +4,14 @@ A continuous AI stare. One page, black, an eye looking at you, and one line: *Wh
 
 Live: https://jamminstein.github.io/a-eye/
 
-## Replacing the video
+## Many eyes
+
+The page opens on a different eye each visit: `eye.mp4` (the original, called `classic`) plus
+up to 50 clips in `clips/`, picked from a shuffled bag so none repeats until all have been seen.
+`/?eye=eye-07` shows one in particular. The 50 are made from AI-photographed frames animated in
+Kling; the whole process, the prompts and the ingest script are in [`kling/`](kling/README.md).
+
+## Replacing the video (the original, `eye.mp4`)
 
 `eye.mp4` currently holds a procedurally-rendered placeholder. To swap in a real clip:
 

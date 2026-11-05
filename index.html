@@ -123,14 +123,13 @@
 </style>
 </head>
 <body>
+<!-- No src or poster here: the script below picks which eye you get on each visit. -->
 <video id="stare"
        autoplay muted loop playsinline
        preload="auto"
-       poster="poster.jpg"
        disablepictureinpicture
        tabindex="-1"
-       aria-label="Two eyes, watching."
-       src="eye.mp4"></video>
+       aria-label="An eye, watching you."></video>
 <p id="ask">What are you looking at?</p>
 <div id="grain" aria-hidden="true"></div>
 <script>
@@ -139,6 +138,50 @@
   var reduce = window.matchMedia
     ? window.matchMedia('(prefers-reduced-motion: reduce)')
     : { matches: false, addEventListener: function () {} };
+
+  // ---- which eye ---------------------------------------------------------
+  // The list is rewritten by kling/ingest.py. "classic" is the original
+  // eye.mp4; any other id is clips/<id>.mp4 with clips/<id>.jpg as its poster.
+  var CLIPS = /*clips*/["classic"]/*end*/;
+
+  function srcOf(id)    { return id === 'classic' ? 'eye.mp4'    : 'clips/' + id + '.mp4'; }
+  function posterOf(id) { return id === 'classic' ? 'poster.jpg' : 'clips/' + id + '.jpg'; }
+
+  // A shuffled bag kept in localStorage: every eye is shown once before any
+  // comes round again, and the first eye of a fresh bag is never the one just
+  // seen. Without storage (private windows) it falls back to a plain random
+  // pick. ?eye=eye-07 (or #eye-07) shows one particular eye and leaves the bag alone.
+  function pickEye() {
+    var q = /[?&]eye=([\w-]+)/.exec(location.search) || /^#([\w-]+)$/.exec(location.hash);
+    if (q && CLIPS.indexOf(q[1]) !== -1) return q[1];
+    var st = {};
+    try { st = JSON.parse(localStorage.getItem('aeye') || '{}') || {}; } catch (e) {}
+    var bag = (st.bag || []).filter(function (id) { return CLIPS.indexOf(id) !== -1; });
+    if (!bag.length) {
+      bag = CLIPS.slice();
+      for (var i = bag.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1)), t = bag[i]; bag[i] = bag[j]; bag[j] = t;
+      }
+      if (bag.length > 1 && bag[0] === st.last) {
+        var k = 1 + Math.floor(Math.random() * (bag.length - 1)), u = bag[0]; bag[0] = bag[k]; bag[k] = u;
+      }
+    }
+    var id = bag.shift();
+    try { localStorage.setItem('aeye', JSON.stringify({ bag: bag, last: id })); } catch (e) {}
+    return id;
+  }
+
+  var eye = pickEye();
+  v.poster = posterOf(eye);
+  v.src = srcOf(eye);
+  // If the chosen clip will not load, show the original rather than a black page.
+  v.addEventListener('error', function () {
+    if (eye === 'classic') return;
+    eye = 'classic';
+    v.poster = posterOf(eye);
+    v.src = srcOf(eye);
+    start();
+  }, { once: true });
 
   // Runs synchronously, before autoplay has buffered enough to render a frame,
   // so reduced-motion viewers get the still poster and never see motion.

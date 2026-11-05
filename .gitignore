@@ -44,3 +44,10 @@ xcuserdata/
 *.pem
 *.p12
 *.keystore
+
+# Kling working files. kling/frames/ IS committed (21 MB, $24 to remake, never the same twice).
+# The comparison pilot, raw Kling downloads and the generated sheet are not.
+kling/pilot/
+kling/raw/
+kling/sheet.html
+kling/*.out
