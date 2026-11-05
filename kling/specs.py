@@ -7,8 +7,7 @@ Each spec has everything needed for two jobs:
 
 kind:  macro = one eye fills the frame
        eye   = one eye with brow, temple and nose bridge
-       pair  = both eyes, brows to cheekbones
-side:  which eye (macro / eye only)
+side:  which eye (the subject's left or right)
 
 Rules every spec follows, because they are what separates a photograph from an
 "AI eye": a specific person, a specific light and a specific thing mirrored in
@@ -48,11 +47,6 @@ FRAMING = {
         "Close-up of the {side} eye of {who}, with the eyebrow, the temple and the side of the nose "
         "bridge in frame; the eye sits in the middle third of the 16:9 frame, a little above centre."
     ),
-    "pair": (
-        "Tight horizontal crop of both eyes and the bridge of the nose of {who}, from the brows down "
-        "to the upper cheekbones, nothing below the tip of the nose. The two eyes are slightly "
-        "asymmetric, as real eyes are."
-    ),
 }
 
 # Added to every Kling prompt: the camera does nothing, the eye does everything.
@@ -66,7 +60,8 @@ KLING_NEGATIVE = (
 )
 
 # ---------------------------------------------------------------------- eyes
-# 20 macro, 14 eye, 16 pair.
+# 27 macro, 23 eye. Every frame is a single eye (the first 34 were the original run; 35-50
+# were first made as both-eyes crops and redone as single eyes on request).
 
 SPECS = [
     # ------------------------------------------------------------------ macro
@@ -515,195 +510,189 @@ SPECS = [
                "something outside catches her attention.",
     ),
 
-    # ------------------------------------------------------------------- pair
+    # ------------------------------------------------------------ eyes 35-50
     dict(
-        name="Late edit", kind="pair", side="",
+        name="Late edit", kind="eye", side="right",
         who="a Persian man of about twenty-nine, with thick dark brows",
-        look="Dark brown irises; thick brows nearly meeting above the nose; long lashes; a "
-             "faint shadow of stubble at the cheekbones; tired eyes, a slight redness; a little "
-             "dry skin on the lids.",
-        light="Working at 2 a.m.: cold blue-white from a laptop below the frame; the corneas "
-              "mirror a bright rectangular screen.",
-        state="Both eyes on the lens, tired and focused.",
-        motion="Both eyes hold the lens. Both blink, slightly out of sync. The screen's "
-               "reflection flickers. A faint furrow between the brows. The eyes sharpen.",
+        look="Dark brown iris; a thick brow, the hairs growing in different directions and "
+             "thickening toward the nose; long lashes; a faint shadow of stubble at the top of the "
+             "cheek; a tired eye with slight redness at the waterline; a little dry skin on the lid.",
+        light="Working at 2 a.m.: cold blue-white from a laptop below the frame; the cornea "
+              "mirrors a bright rectangular screen.",
+        state="Looking into the lens, tired and focused.",
+        motion="The eye holds the lens. A blink, then another, slightly slower. The screen's "
+               "reflection flickers. A faint furrow gathers in the brow. The eye sharpens.",
     ),
     dict(
-        name="Grey streak", kind="pair", side="",
-        who="a South African Black woman of about fifty-five, with a streak of grey in her left brow",
-        look="Dark brown irises with a pale arcus beginning; fine lines under the eyes; "
-             "a streak of silver in one eyebrow; a slightly asymmetric lid crease; no makeup; "
-             "warm brown skin with a few age spots.",
-        light="Kitchen at dusk: warm light from a window plus a pendant lamp; each cornea mirrors "
+        name="Grey streak", kind="eye", side="left",
+        who="a South African Black woman of about fifty-five, with a streak of grey in the brow above this eye",
+        look="Dark brown iris with a pale arcus beginning; fine lines under the eye; a streak of "
+             "silver running through the eyebrow; a slightly uneven lid crease; no makeup; warm "
+             "brown skin with a few age spots.",
+        light="Kitchen at dusk: warm light from a window plus a pendant lamp; the cornea mirrors "
               "the window and the lamp.",
-        state="Both eyes on the lens, calm and warm.",
+        state="Looking into the lens, calm and warm.",
         motion="Her gaze goes from the lens to the left, as if listening to someone, and returns. "
-               "Both eyes blink slowly together. One brow lifts. A little warmth comes into the "
-               "eyes.",
+               "A slow blink. The brow lifts. A little warmth comes into the eye.",
     ),
     dict(
-        name="Bleached brows", kind="pair", side="",
-        who="a person of about twenty-one, East Asian, androgynous, with bleached eyebrows and a small silver ring in the left brow",
-        look="Dark brown irises; the bleached brows almost white against the skin; a tiny silver "
-             "ring through one brow; a very faint blue vein at the bridge; fine-pored skin; "
+        name="Bleached brow", kind="eye", side="left",
+        who="a person of about twenty-one, East Asian, androgynous, with a bleached eyebrow and a small silver ring through it",
+        look="Dark brown iris; the bleached brow almost white against the skin; a tiny silver ring "
+             "through the brow; a very faint blue vein at the bridge of the nose; fine-pored skin; "
              "short straight lashes.",
         light="A club doorway with a hard magenta neon from the left and a cool blue from the "
-              "right; the corneas mirror the two coloured light tubes.",
-        state="Both eyes on the lens, cool and still.",
+              "right; the cornea mirrors the two coloured light tubes.",
+        state="Looking into the lens, cool and still.",
         motion="A slow blink in the coloured light. The neon flickers and the colour balance "
-               "shifts. A faint smirk crosses the eyes. The ring catches the light.",
+               "shifts. A faint smirk crosses the eye. The ring catches the light.",
     ),
     dict(
-        name="Pale morning", kind="pair", side="",
-        who="a Swedish man of about sixty-seven",
-        look="Blue irises, pale with a darker ring; white-blond brow hairs; thin, wrinkled lids; "
-             "pink skin with broken capillaries on the nose bridge; glassy wet eyes; sun-damaged "
-             "skin.",
-        light="Flat overcast daylight outside; the corneas mirror a grey sky and a roofline.",
-        state="Both eyes on the lens, steady, a little stern.",
-        motion="A long, unblinking stare. Then a slow blink in unison. The wet eyes shine as the "
-               "light changes. The sternness softens slightly.",
+        name="Steel grey", kind="macro", side="right",
+        who="a Latvian man of about sixty-seven",
+        look="Steel-grey iris with a rust-brown ring around the pupil and fine pale radial "
+             "fibres; white-blond brow hairs; thin, wrinkled lids; pink skin with broken capillaries; "
+             "a glassy wet eye; sun-damaged skin.",
+        light="Flat overcast daylight outside; the cornea mirrors a grey sky and a roofline.",
+        state="Looking into the lens, steady, a little stern.",
+        motion="A long, unblinking stare. Then a slow blink. The wet eye shines as the light "
+               "changes. The sternness softens slightly.",
     ),
     dict(
-        name="Snowfall", kind="pair", side="",
-        who="an Inuit woman of about forty, with the fur trim of a parka hood framing the edges",
-        look="Very dark brown irises; fine epicanthic folds; frost on a few lashes and brow "
-             "hairs; weathered rosy cheeks; short thick lashes; small snow crystals on the fur.",
-        light="Bright white arctic overcast; the corneas mirror a pure white sky.",
-        state="Both eyes on the lens, level and warm in a freezing light.",
-        motion="Snow drifts past the lens, out of focus. Frost on the lashes glitters. She "
-               "blinks slowly and the frost breaks off. The gaze holds, warm.",
+        name="Snowfall", kind="eye", side="right",
+        who="an Inuit woman of about forty, with the fur trim of a parka hood framing the edge of the picture",
+        look="Very dark brown iris; a fine epicanthic fold; frost on a few lashes and brow hairs; "
+             "weathered rosy cheek; short thick lashes; small snow crystals on the fur.",
+        light="Bright white arctic overcast; the cornea mirrors a pure white sky.",
+        state="Looking into the lens, level and warm in a freezing light.",
+        motion="Snow drifts past the lens, out of focus. Frost on the lashes glitters. She blinks "
+               "slowly and a little frost breaks off. The gaze holds, warm.",
     ),
     dict(
-        name="Cinema", kind="pair", side="",
+        name="Cinema", kind="macro", side="left",
         who="a Colombian man of about twenty-four",
-        look="Brown irises; strong straight brows; fine lashes; a little shine on the lids; "
-             "faint stubble at the cheekbones.",
-        light="Sitting in a dark cinema: the only light is the flickering screen; the corneas "
-              "mirror a bright moving film image as a rectangular glow with changing patches.",
-        state="Both eyes on the lens, lit by changing light, a little amazed.",
-        motion="The screen light flares and dims across the eyes. His eyes widen at something "
-               "on screen, the pupils dilating, then relax. A slow blink.",
+        look="Brown iris; a strong straight brow; fine lashes; a little shine on the lid; a faint "
+             "shadow of stubble at the top of the cheek.",
+        light="Sitting in a dark cinema: the only light is the flickering screen; the cornea "
+              "mirrors a bright moving film image as a rectangular glow with changing patches.",
+        state="Looking into the lens, lit by changing light, a little amazed.",
+        motion="The screen light flares and dims across the eye. His eye widens at something on "
+               "screen, the pupil dilating, then relaxes. A slow blink.",
     ),
     dict(
-        name="Kohl", kind="pair", side="",
-        who="a Greek woman of about thirty-one with thick, nearly joined brows",
-        look="Very dark brown irises; kohl liner on the waterline, a bit worn and smudged; thick "
-             "natural brows; strong lashes; olive skin; one tiny gold hoop earring edge visible "
-             "at the frame margin.",
-        light="A table lit by a few candles at dinner; each cornea mirrors the small flame and "
-              "the dark of the room.",
-        state="Both eyes on the lens, an eyebrow arched.",
-        motion="A slow arched brow. The candlelight flickers across the eyes. A slow blink. "
-               "The gaze never leaves the lens.",
+        name="Bare bulb", kind="macro", side="left",
+        who="a Greek woman of about thirty-one with a thick, strongly arched brow",
+        look="Very dark brown iris; kohl liner on the waterline, a bit worn and smudged; a thick "
+             "natural brow; strong lashes; olive skin.",
+        light="A night street market lit by a single bare tungsten bulb hanging above and in "
+              "front of her; the cornea mirrors the bare bulb and the dark edge of an awning.",
+        state="Looking into the lens, the brow arched.",
+        motion="The bulb sways a little in the wind and its reflection slides across the cornea. "
+               "A slow arch of the brow. A slow blink. The gaze never leaves the lens.",
     ),
     dict(
-        name="Steppe", kind="pair", side="",
+        name="Steppe", kind="eye", side="left",
         who="a Mongolian man of about fifty, weathered by wind",
-        look="Dark brown irises; narrow eyes with a pronounced fold; deep squint lines; wind-"
-             "chapped red skin; short thick lashes; a few grey hairs in the brow.",
-        light="Open grassland in bright sun with a steady wind; the corneas mirror a huge pale "
+        look="Dark brown iris; a narrow eye with a pronounced fold; deep squint lines; wind-chapped "
+             "red skin; short thick lashes; a few grey hairs in the brow.",
+        light="Open grassland in bright sun with a steady wind; the cornea mirrors a huge pale "
               "sky and a distant horizon line.",
-        state="Both eyes on the lens, narrowed against the wind.",
-        motion="A gust moves the lashes and brow hairs and he narrows his eyes; the pupils "
-               "adjust to the glare. A slow blink. The gaze stays fixed and still.",
+        state="Looking into the lens, narrowed against the wind.",
+        motion="A gust moves the lashes and brow hairs and he narrows his eye; the pupil adjusts "
+               "to the glare. A slow blink. The gaze stays fixed and still.",
     ),
     dict(
-        name="Cat-eye frames", kind="pair", side="",
+        name="Cat-eye frames", kind="eye", side="right",
         who="an American woman of seventy-two wearing cat-eye reading glasses",
-        look="Light grey-blue irises magnified slightly by the lenses; fine pale lashes; "
-             "a faint line of mascara; wrinkled lids; the frame rims crossing at the edges with a "
-             "tiny smudge on one lens.",
-        light="Soft window light from the left, reflected in the lenses as pale rectangles "
-              "that partly cover each eye.",
-        state="Both eyes on the lens through the glasses, bright and a little mischievous.",
-        motion="The reflection on the lenses slides as she tilts her head a hair. A slow blink "
-               "behind the glasses. The eyes crinkle with a hidden smile.",
+        look="Light grey-blue iris, magnified slightly by the lens; fine pale lashes; a faint line "
+             "of mascara; a wrinkled lid; the tortoiseshell frame crossing the edge of the picture, "
+             "a tiny smudge on the lens.",
+        light="Soft window light from the left, reflected in the lens as a pale rectangle that "
+              "partly covers the eye.",
+        state="Looking into the lens through the glasses, bright and a little mischievous.",
+        motion="The reflection on the lens slides as she tilts her head a hair. A slow blink "
+               "behind the glasses. The eye crinkles with a hidden smile.",
     ),
     dict(
-        name="Mismatched", kind="pair", side="",
+        name="Halo", kind="macro", side="left",
         who="a person of about thirty-five, Black and Japanese, with very curly lashes",
-        look="Central heterochromia: the left iris blue-grey with a brown halo around the pupil, "
-             "the right iris warm brown; very curly lashes; a slightly asymmetric brow; light "
-             "brown skin with a few freckles across the nose bridge.",
-        light="Bright diffused window light; the corneas mirror a pale window with a faint vertical "
-              "bar of curtain.",
-        state="Both eyes on the lens, curious, the head very slightly tilted.",
-        motion="The head tilts a few degrees; the two eyes refocus on the lens. A slow blink. "
-               "The pupils flex differently for a moment as the light shifts.",
+        look="Central heterochromia: a blue-grey iris with a distinct warm brown halo around the "
+             "pupil, its boundary jagged and feathered; very curly lashes; a slightly uneven brow; "
+             "light brown skin with a few freckles.",
+        light="Bright diffused window light; the cornea mirrors a pale window with a faint "
+              "vertical bar of curtain.",
+        state="Looking into the lens, curious, the head very slightly tilted.",
+        motion="The head tilts a few degrees and the eye refocuses on the lens. A slow blink. "
+               "The pupil flexes and the brown halo seems to shift as the light moves.",
     ),
     dict(
-        name="3 a.m.", kind="pair", side="",
+        name="3 a.m.", kind="macro", side="right",
         who="a Pakistani man of about nineteen, a student studying through the night",
-        look="Dark brown irises; red-rimmed eyes with visible capillaries; dark circles; fine "
-             "peach fuzz on the brow bone; shiny skin; a small spot on the temple.",
-        light="A desk lamp low to the right and a laptop glow from below; the corneas mirror "
-              "the little lamp and the bright screen.",
-        state="Both eyes on the lens, exhausted, lids heavy.",
-        motion="Lids droop together. A heavy blink and a jerk back to wakefulness; the eyes "
-               "open wider and refocus. The pupils narrow a touch in the lamp light. A small "
-               "sigh visible in the lids.",
+        look="Dark brown iris; a faintly pink waterline and a few fine red capillaries on the sclera, tired but not bloodshot, not inflamed; a dark circle beneath; "
+             "fine peach fuzz on the brow bone; shiny skin; a small spot at the temple.",
+        light="A desk lamp low to the right and a laptop glow from below; the cornea mirrors the "
+              "little lamp and the bright screen.",
+        state="Looking into the lens, exhausted, the lid heavy.",
+        motion="The lid droops. A heavy blink and a jerk back to wakefulness; the eye opens wider "
+               "and refocuses. The pupil narrows a touch in the lamp light. A small sigh shows "
+               "in the lid.",
     ),
     dict(
-        name="Smothered laugh", kind="pair", side="",
-        who="a Filipina woman of about forty-five with fine laugh lines",
-        look="Dark brown irises; crow's feet gathering at both outer corners; a trace of eyeliner; "
-             "soft lids; warm brown skin; a hint of a blush on the cheekbones.",
-        light="Warm tungsten lamp light from the left; the corneas mirror a warm lamp with a small "
+        name="Smothered laugh", kind="eye", side="left",
+        who="a Thai woman of about forty-five with fine laugh lines",
+        look="Dark brown iris; crow's feet gathering at the outer corner; a trace of eyeliner; a "
+             "soft lid; warm brown skin; a hint of a blush on the cheekbone.",
+        light="Warm tungsten lamp light from the left; the cornea mirrors a warm lamp with a small "
               "shade shape.",
-        state="Both eyes on the lens, bright with held-in amusement.",
-        motion="She is trying not to laugh: the eyes crinkle, the lower lids lift, the gaze "
-               "wavers and then returns to the lens. A quick blink. The amusement shakes the "
-               "skin slightly.",
+        state="Looking into the lens, bright with held-in amusement.",
+        motion="She is trying not to laugh: the eye crinkles, the lower lid lifts, the gaze wavers "
+               "and then returns to the lens. A quick blink. The amusement shakes the skin slightly.",
     ),
     dict(
-        name="Harbour light", kind="pair", side="",
+        name="Harbour light", kind="eye", side="right",
         who="a Portuguese man of eighty-three, a retired fisherman",
-        look="Pale cloudy brown irises with arcus; heavy bags under the eyes; deep creases; "
-             "thick white brows; sun-leathered skin with a few spots; wet watery eyes.",
+        look="Pale cloudy brown iris with arcus; heavy bags under the eye; deep creases; a thick "
+             "white brow; sun-leathered skin with a few spots; a watery eye.",
         light="Sitting beside the harbour: sunlight bouncing off water throws moving caustic "
-              "ripples of light across the face; the corneas mirror a bright sky and a tiny "
-              "dark boat.",
-        state="Both eyes on the lens, gentle and amused.",
-        motion="Rippling light from the water moves across the whole face. His eyes squint "
+              "ripples of light across the face; the cornea mirrors a bright sky and a tiny dark boat.",
+        state="Looking into the lens, gentle and amused.",
+        motion="Rippling light from the water moves across the whole face. His eye squints "
                "gently. A slow, soft blink. The gaze is warm and unhurried.",
     ),
     dict(
-        name="Headlights", kind="pair", side="",
+        name="Headlights", kind="macro", side="left",
         who="a Ghanaian woman of about twenty-eight",
-        look="Very dark brown irises; natural, slightly clumped lashes; a small gold stud at "
-             "the edge of the brow; smooth dark skin with a fine sheen; a faint tired "
-             "redness at the lower lid.",
-        light="Standing by a road at night as cars pass: sweeping white and yellow headlights "
-              "flash across the face; the corneas mirror the moving sources.",
-        state="Both eyes on the lens, alert.",
-        motion="A pair of headlights sweeps across: the pupils contract, then slowly reopen. "
-               "She blinks against the flash. The gaze holds, unfazed.",
+        look="Very dark brown iris; natural, slightly clumped lashes; a small gold stud at the end "
+             "of the brow; smooth dark skin with a fine sheen; a faint tired redness at the lower lid.",
+        light="Standing by a road at night as cars pass: sweeping white and yellow headlights flash "
+              "across the face; the cornea mirrors the moving sources.",
+        state="Looking into the lens, alert.",
+        motion="A pair of headlights sweeps across: the pupil contracts, then slowly reopens. She "
+               "blinks against the flash. The gaze holds, unfazed.",
     ),
     dict(
-        name="Lazy eye", kind="pair", side="",
-        who="a Brazilian man of about forty-one with a mild exotropia in his right eye",
-        look="Dark brown irises; the left eye looks straight into the lens while the right eye "
-             "rests outward by only a few degrees, a subtle misalignment, most of the iris still "
-             "visible and the sclera not exposed more than usual; thick brows; light stubble at the very top of the cheek; "
-             "creases at the corners; a natural, slightly uneven look.",
-        light="Window light from the left; the corneas mirror a window; a warm bounce from a "
-              "wall.",
-        state="The left eye on the lens, the right eye just off.",
-        motion="The left eye holds the lens; the right eye drifts slowly outward and "
-               "returns. A slow blink. A tiny involuntary squint. The mismatch is natural.",
+        name="Iris freckle", kind="macro", side="right",
+        who="a Brazilian man of about forty-one",
+        look="Dark brown iris with one tiny dark freckle (an iris naevus) near the edge at about "
+             "seven o'clock, and a faint pale pinguecula on the nasal sclera; a thick brow; light "
+             "stubble shadow at the very top of the cheek; creases at the corner; a natural, "
+             "slightly uneven look.",
+        light="Window light from the left; the cornea mirrors a window; a warm bounce from a wall.",
+        state="Looking into the lens, relaxed.",
+        motion="A steady gaze. The pupil breathes with the light and the dark freckle on the iris "
+               "drifts with it. A slow blink. A tiny involuntary squint.",
     ),
     dict(
-        name="Sheer curtain", kind="pair", side="",
+        name="Sheer curtain", kind="eye", side="left",
         who="an Indian woman of about twenty-six with a small freckle on the nose bridge",
-        look="Very dark brown irises; kohl-lined waterline; strong natural brows; soft lids; "
-             "warm brown skin; a tiny stud earring edge at the frame margin.",
-        light="Afternoon light through a sheer curtain moved by a breeze, throwing a soft "
-              "pattern of light and shade across the face; the corneas mirror the window and "
-              "a bit of billowing curtain.",
-        state="Both eyes on the lens, serene.",
-        motion="The curtain shadow slides across the face with the breeze. Her eyes follow "
-               "nothing and stay on the lens. A slow blink as the light passes.",
+        look="Very dark brown iris; kohl-lined waterline; a strong natural brow; a soft lid; warm "
+             "brown skin.",
+        light="Afternoon light through a sheer curtain moved by a breeze, throwing a soft pattern "
+              "of light and shade across the face; the cornea mirrors the window and a bit of "
+              "billowing curtain.",
+        state="Looking into the lens, serene.",
+        motion="The curtain shadow slides across the face with the breeze. Her eye follows "
+               "nothing and stays on the lens. A slow blink as the light passes.",
     ),
 ]
 

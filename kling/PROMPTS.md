@@ -208,98 +208,98 @@ A slow, thoughtful stare. A pause. One long, slow blink. The brow lifts just per
 
 Her eyes drift to the window light and back to the lens. The brightness changes as the plane banks slightly. A blink. A faint widening of the eye as something outside catches her attention. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-35: Late edit (pair)
+## eye-35: Late edit (eye)
 
 *a Persian man of about twenty-nine, with thick dark brows*
 
-Both eyes hold the lens. Both blink, slightly out of sync. The screen's reflection flickers. A faint furrow between the brows. The eyes sharpen. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The eye holds the lens. A blink, then another, slightly slower. The screen's reflection flickers. A faint furrow gathers in the brow. The eye sharpens. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-36: Grey streak (pair)
+## eye-36: Grey streak (eye)
 
-*a South African Black woman of about fifty-five, with a streak of grey in her left brow*
+*a South African Black woman of about fifty-five, with a streak of grey in the brow above this eye*
 
-Her gaze goes from the lens to the left, as if listening to someone, and returns. Both eyes blink slowly together. One brow lifts. A little warmth comes into the eyes. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+Her gaze goes from the lens to the left, as if listening to someone, and returns. A slow blink. The brow lifts. A little warmth comes into the eye. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-37: Bleached brows (pair)
+## eye-37: Bleached brow (eye)
 
-*a person of about twenty-one, East Asian, androgynous, with bleached eyebrows and a small silver ring in the left brow*
+*a person of about twenty-one, East Asian, androgynous, with a bleached eyebrow and a small silver ring through it*
 
-A slow blink in the coloured light. The neon flickers and the colour balance shifts. A faint smirk crosses the eyes. The ring catches the light. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+A slow blink in the coloured light. The neon flickers and the colour balance shifts. A faint smirk crosses the eye. The ring catches the light. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-38: Pale morning (pair)
+## eye-38: Steel grey (macro)
 
-*a Swedish man of about sixty-seven*
+*a Latvian man of about sixty-seven*
 
-A long, unblinking stare. Then a slow blink in unison. The wet eyes shine as the light changes. The sternness softens slightly. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+A long, unblinking stare. Then a slow blink. The wet eye shines as the light changes. The sternness softens slightly. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-39: Snowfall (pair)
+## eye-39: Snowfall (eye)
 
-*an Inuit woman of about forty, with the fur trim of a parka hood framing the edges*
+*an Inuit woman of about forty, with the fur trim of a parka hood framing the edge of the picture*
 
-Snow drifts past the lens, out of focus. Frost on the lashes glitters. She blinks slowly and the frost breaks off. The gaze holds, warm. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+Snow drifts past the lens, out of focus. Frost on the lashes glitters. She blinks slowly and a little frost breaks off. The gaze holds, warm. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-40: Cinema (pair)
+## eye-40: Cinema (macro)
 
 *a Colombian man of about twenty-four*
 
-The screen light flares and dims across the eyes. His eyes widen at something on screen, the pupils dilating, then relax. A slow blink. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The screen light flares and dims across the eye. His eye widens at something on screen, the pupil dilating, then relaxes. A slow blink. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-41: Kohl (pair)
+## eye-41: Bare bulb (macro)
 
-*a Greek woman of about thirty-one with thick, nearly joined brows*
+*a Greek woman of about thirty-one with a thick, strongly arched brow*
 
-A slow arched brow. The candlelight flickers across the eyes. A slow blink. The gaze never leaves the lens. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The bulb sways a little in the wind and its reflection slides across the cornea. A slow arch of the brow. A slow blink. The gaze never leaves the lens. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-42: Steppe (pair)
+## eye-42: Steppe (eye)
 
 *a Mongolian man of about fifty, weathered by wind*
 
-A gust moves the lashes and brow hairs and he narrows his eyes; the pupils adjust to the glare. A slow blink. The gaze stays fixed and still. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+A gust moves the lashes and brow hairs and he narrows his eye; the pupil adjusts to the glare. A slow blink. The gaze stays fixed and still. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-43: Cat-eye frames (pair)
+## eye-43: Cat-eye frames (eye)
 
 *an American woman of seventy-two wearing cat-eye reading glasses*
 
-The reflection on the lenses slides as she tilts her head a hair. A slow blink behind the glasses. The eyes crinkle with a hidden smile. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The reflection on the lens slides as she tilts her head a hair. A slow blink behind the glasses. The eye crinkles with a hidden smile. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-44: Mismatched (pair)
+## eye-44: Halo (macro)
 
 *a person of about thirty-five, Black and Japanese, with very curly lashes*
 
-The head tilts a few degrees; the two eyes refocus on the lens. A slow blink. The pupils flex differently for a moment as the light shifts. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The head tilts a few degrees and the eye refocuses on the lens. A slow blink. The pupil flexes and the brown halo seems to shift as the light moves. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-45: 3 a.m. (pair)
+## eye-45: 3 a.m. (macro)
 
 *a Pakistani man of about nineteen, a student studying through the night*
 
-Lids droop together. A heavy blink and a jerk back to wakefulness; the eyes open wider and refocus. The pupils narrow a touch in the lamp light. A small sigh visible in the lids. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The lid droops. A heavy blink and a jerk back to wakefulness; the eye opens wider and refocuses. The pupil narrows a touch in the lamp light. A small sigh shows in the lid. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-46: Smothered laugh (pair)
+## eye-46: Smothered laugh (eye)
 
-*a Filipina woman of about forty-five with fine laugh lines*
+*a Thai woman of about forty-five with fine laugh lines*
 
-She is trying not to laugh: the eyes crinkle, the lower lids lift, the gaze wavers and then returns to the lens. A quick blink. The amusement shakes the skin slightly. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+She is trying not to laugh: the eye crinkles, the lower lid lifts, the gaze wavers and then returns to the lens. A quick blink. The amusement shakes the skin slightly. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-47: Harbour light (pair)
+## eye-47: Harbour light (eye)
 
 *a Portuguese man of eighty-three, a retired fisherman*
 
-Rippling light from the water moves across the whole face. His eyes squint gently. A slow, soft blink. The gaze is warm and unhurried. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+Rippling light from the water moves across the whole face. His eye squints gently. A slow, soft blink. The gaze is warm and unhurried. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-48: Headlights (pair)
+## eye-48: Headlights (macro)
 
 *a Ghanaian woman of about twenty-eight*
 
-A pair of headlights sweeps across: the pupils contract, then slowly reopen. She blinks against the flash. The gaze holds, unfazed. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+A pair of headlights sweeps across: the pupil contracts, then slowly reopens. She blinks against the flash. The gaze holds, unfazed. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-49: Lazy eye (pair)
+## eye-49: Iris freckle (macro)
 
-*a Brazilian man of about forty-one with a mild exotropia in his right eye*
+*a Brazilian man of about forty-one*
 
-The left eye holds the lens; the right eye drifts slowly outward and returns. A slow blink. A tiny involuntary squint. The mismatch is natural. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+A steady gaze. The pupil breathes with the light and the dark freckle on the iris drifts with it. A slow blink. A tiny involuntary squint. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
 
-## eye-50: Sheer curtain (pair)
+## eye-50: Sheer curtain (eye)
 
 *an Indian woman of about twenty-six with a small freckle on the nose bridge*
 
-The curtain shadow slides across the face with the breeze. Her eyes follow nothing and stay on the lens. A slow blink as the light passes. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+The curtain shadow slides across the face with the breeze. Her eye follows nothing and stays on the lens. A slow blink as the light passes. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
