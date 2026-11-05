@@ -6,7 +6,7 @@
     kling/ingest.py --rebuild-manifest
 
 For each clip:
-  1. find which of the 55 frames it came from (by "eye-07" in the file name if
+  1. find which of the 60 frames it came from (by "eye-07" in the file name if
      there is one, otherwise by comparing its first frame with every frame, so
      the names Kling gives the downloads do not matter);
   2. grade it to black and white and ping-pong it (forward, then reverse), the

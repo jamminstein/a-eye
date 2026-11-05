@@ -7,8 +7,8 @@ Live: https://jamminstein.github.io/a-eye/
 ## Many eyes
 
 The page opens on a different eye each visit: `eye.mp4` (the original, called `classic`) plus
-up to 55 clips in `clips/`, picked from a shuffled bag so none repeats until all have been seen.
-`/?eye=eye-07` shows one in particular. The 55 are made from AI-photographed frames animated in
+up to 60 clips in `clips/`, picked from a shuffled bag so none repeats until all have been seen.
+`/?eye=eye-07` shows one in particular. The 60 are made from AI-photographed frames animated in
 Kling; the whole process, the prompts and the ingest script are in [`kling/`](kling/README.md).
 
 ## Replacing the video (the original, `eye.mp4`)

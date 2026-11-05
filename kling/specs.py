@@ -1,4 +1,4 @@
-"""The 55 eyes.
+"""The 60 eyes.
 
 Each spec has everything needed for two jobs:
 
@@ -60,9 +60,9 @@ KLING_NEGATIVE = (
 )
 
 # ---------------------------------------------------------------------- eyes
-# 28 macro, 27 eye. Every frame is a single eye (the first 34 were the original run; 35-50
-# were first made as both-eyes crops and redone as single eyes on request; 51-55 are the
-# eccentrics, added later).
+# 30 macro, 30 eye. Every frame is a single eye (the first 34 were the original run; 35-50
+# were first made as both-eyes crops and redone as single eyes on request; 51-60 are the
+# eccentrics, added later in two batches of five).
 
 SPECS = [
     # ------------------------------------------------------------------ macro
@@ -775,9 +775,89 @@ SPECS = [
                "pupil pinches small and opens as the glow fades. She squints harder, then relaxes, a "
                "bead of sweat running into the corner of the eye. A slow blink.",
     ),
+    # ------------------------------------------------ eyes 56-60: more eccentrics
+    dict(
+        name="Luchador", kind="eye", side="right",
+        who="a Mexican luchador of about thirty-eight, in a silver sequinned mask",
+        look="Seen through the eyehole of a lucha libre mask: silver sequins and black-and-gold "
+             "trim around the hole, the stitched edge of the hole pressing a thin red line into the "
+             "skin; sequins catching light at the edges of the picture; fine fibres of the lining "
+             "at the hole; dark brown iris; the underside of a thick black eyebrow just visible; "
+             "damp lashes; sweat running from under the mask; the skin around the eye flushed and "
+             "slightly swollen with effort.",
+        light="Arena ring lights overhead: hard white-hot lamps and a blue-red stage wash from the "
+              "crowd side; the cornea mirrors a bright rig of stage lights; sweat glints.",
+        state="Looking into the lens, hard and theatrical, a performer's stare.",
+        motion="He stares down the lens with theatrical hardness. The sequins around the eyehole "
+               "flash as the lights sweep. A bead of sweat runs into the corner of the eye and he "
+               "blinks hard once. The jaw tightens under the mask.",
+    ),
+    dict(
+        name="Eagle hunter", kind="eye", side="left",
+        who="a Kazakh eagle hunter of about sixty, in the Altai mountains",
+        look="The edge of a fox-fur hat across the top of the picture; deeply weathered skin with "
+             "the lines of decades of squinting into wind and snow glare; dark brown iris with a "
+             "tawny ring; frost on the lashes and brow; the dark brown feathers and hooked beak of "
+             "a golden eagle, out of focus, at the right edge of the picture an inch from his "
+             "cheek (no eagle eye in frame); a faint pink windburn.",
+        light="A snow-covered mountainside under thin high-altitude sun, hard white glare from the "
+              "snow below; the cornea mirrors a white sky, a dark ridge and the dark shape of the bird.",
+        state="Looking into the lens, patient and unblinking, a hunter's stillness.",
+        motion="Utter stillness, a man who waits for hours. The eagle's feathers ruffle in the wind "
+               "at the edge of the picture. He blinks once, very slowly, and frost drops from a "
+               "lash. The pupil adjusts to the glare.",
+    ),
+    dict(
+        name="Quarry", kind="eye", side="right",
+        who="a Maltese freediver of about forty-two, her face in a diving mask just below the surface of the water",
+        look="Seen through the clear glass of a dive mask, the black silicone skirt pressed against "
+             "the skin along the edges of the picture; tiny droplets and a thin film of condensation "
+             "on the inside of the glass; one silver bubble rising across the glass; wet sun-freckled "
+             "skin; dark grey-green iris; her wet brow hairs flattened; tiny air bubbles caught in "
+             "the lashes.",
+        light="A flooded limestone quarry in daylight: blue-green water light from above, wavering "
+              "bright caustic lines moving across her skin; the cornea mirrors the bright surface "
+              "above as a wobbling white shape.",
+        state="Looking into the lens, serene, holding her breath.",
+        motion="Caustic light lines slide across her skin. A bubble rises across the glass. She "
+               "holds the gaze, perfectly calm, the pupil steady. A slow blink; a few bubbles "
+               "escape from the lashes and rise. The light wavers.",
+    ),
+    dict(
+        name="Blue scars", kind="macro", side="left",
+        who="a Polish former coal miner of about sixty-seven",
+        look="Blue-black marks of coal dust embedded under the skin of old healed cuts across the "
+             "brow and the lid, fine as pen lines (the so-called blue scars); a heavy grey brow with "
+             "the hairs flattened by decades of a helmet band; deep furrows; pale grey-blue iris, a "
+             "little cloudy; a faint bluish smudge of dust still in the creases of the lower lid; "
+             "sparse lashes; broken capillaries on the cheekbone.",
+        light="A pit-head canteen at dawn: a cold fluorescent strip overhead and the dim orange glow "
+              "of a coal stove low on the right; the cornea mirrors the tube and the stove's small "
+              "glowing door.",
+        state="Looking into the lens, unmoved, a man who has seen worse.",
+        motion="A long, steady stare. The stove's glow flickers faintly on the lower lid. The pupil "
+               "breathes. One slow blink that shows the blue scar crossing the lid. The brow draws "
+               "down a fraction.",
+    ),
+    dict(
+        name="Slit lens", kind="macro", side="right",
+        who="a Lebanese-Australian woman of about twenty-eight, a performer wearing novelty cat-eye contact lenses",
+        look="A novelty contact lens: a yellow-green printed iris pattern, a little flat and "
+             "repetitive in its fibres compared with a real iris, with a black vertical slit pupil "
+             "printed on it and the faint circular edge of the lens sitting on the cornea; her real "
+             "pupil hidden behind the slit; a speck of glitter on the lid; heavy dark liner with a "
+             "flick; a false lash lifting at one corner with a trace of lash glue; the white of the "
+             "eye slightly pink and irritated from the lens; warm olive skin with a small mole.",
+        light="A backstage mirror with a single warm bulb and the cold purple wash of stage spill from "
+              "the left; the cornea mirrors the bulb and a strip of purple light.",
+        state="Looking into the lens, cool, slightly unsettling, a performer's stare.",
+        motion="A slow, uncanny stare. She blinks and the lens shifts a fraction on the eye, the "
+               "slit settling a little off-centre. The purple spill pulses. A hint of a smile pulls "
+               "at the lid.",
+    ),
 ]
 
-assert len(SPECS) == 55, len(SPECS)
+assert len(SPECS) == 60, len(SPECS)
 
 
 def ident(i):

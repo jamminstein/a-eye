@@ -1,4 +1,4 @@
-# The 55 eyes: Kling motion prompts
+# The 60 eyes: Kling motion prompts
 
 Negative prompt (all clips):
 
@@ -333,3 +333,33 @@ The pupil stays wide; the tiny bright disc in the cornea wobbles and dims as the
 *a Czech glassblower of about forty-five, a woman with a singed eyebrow*
 
 Heat shimmer ripples the air in front of the face. The orange glow pulses; the pupil pinches small and opens as the glow fades. She squints harder, then relaxes, a bead of sweat running into the corner of the eye. A slow blink. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-56: Luchador (eye)
+
+*a Mexican luchador of about thirty-eight, in a silver sequinned mask*
+
+He stares down the lens with theatrical hardness. The sequins around the eyehole flash as the lights sweep. A bead of sweat runs into the corner of the eye and he blinks hard once. The jaw tightens under the mask. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-57: Eagle hunter (eye)
+
+*a Kazakh eagle hunter of about sixty, in the Altai mountains*
+
+Utter stillness, a man who waits for hours. The eagle's feathers ruffle in the wind at the edge of the picture. He blinks once, very slowly, and frost drops from a lash. The pupil adjusts to the glare. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-58: Quarry (eye)
+
+*a Maltese freediver of about forty-two, her face in a diving mask just below the surface of the water*
+
+Caustic light lines slide across her skin. A bubble rises across the glass. She holds the gaze, perfectly calm, the pupil steady. A slow blink; a few bubbles escape from the lashes and rise. The light wavers. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-59: Blue scars (macro)
+
+*a Polish former coal miner of about sixty-seven*
+
+A long, steady stare. The stove's glow flickers faintly on the lower lid. The pupil breathes. One slow blink that shows the blue scar crossing the lid. The brow draws down a fraction. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-60: Slit lens (macro)
+
+*a Lebanese-Australian woman of about twenty-eight, a performer wearing novelty cat-eye contact lenses*
+
+A slow, uncanny stare. She blinks and the lens shifts a fraction on the eye, the slit settling a little off-centre. The purple spill pulses. A hint of a smile pulls at the lid. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
