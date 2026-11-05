@@ -99,7 +99,7 @@ def build():
   @media (max-width:760px) {{ .card {{ grid-template-columns:1fr }} }}
 </style></head><body><main>
 <h1>A EYE: Kling sheet</h1>
-<p class="sub">50 starting frames, one prompt each. Do them in batches of five.</p>
+<p class="sub">{len(specs.SPECS)} starting frames, one prompt each. Do them in batches of five. Batch 11 is the five eccentrics.</p>
 <section class="top">
   <dl>{settings}</dl>
   <p style="margin:0 0 6px;color:var(--mut)">Negative prompt (same for all):</p>
@@ -139,7 +139,7 @@ def build():
 </script></body></html>"""
     (HERE / "sheet.html").write_text(page)
 
-    md = ["# The 50 eyes: Kling motion prompts", "",
+    md = [f"# The {len(specs.SPECS)} eyes: Kling motion prompts", "",
           "Negative prompt (all clips):", "", "> " + specs.KLING_NEGATIVE, ""]
     for i, s in enumerate(specs.SPECS):
         md += [f"## {specs.ident(i)}: {s['name']} ({s['kind']})", "", f"*{s['who']}*", "",

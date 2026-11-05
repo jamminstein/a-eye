@@ -1,11 +1,11 @@
-# 50 eyes: from frames to the site
+# 55 eyes: from frames to the site
 
 OpenAI shut its video API (Sora) down on 2026-09-24 and named no replacement, so the clips
 are made in Kling. OpenAI's image model makes the starting frames; Kling animates them;
 `ingest.py` turns Kling's downloads into site assets.
 
-    specs.py         the 50 eyes: who, look, light, the Kling motion prompt for each
-    make_frames.py   frames with gpt-image-2.6-sunburst  ->  frames/eye-01.jpg ... eye-50.jpg
+    specs.py         the 55 eyes: who, look, light, the Kling motion prompt for each
+    make_frames.py   frames with gpt-image-2.6-sunburst  ->  frames/eye-01.jpg ... eye-55.jpg
     build_sheet.py   sheet.html (work page, open it) and PROMPTS.md (plain text)
     ingest.py        raw/*.mp4  ->  ../clips/eye-NN.mp4 + .jpg, and the clip list in ../index.html
 
@@ -18,7 +18,7 @@ are made in Kling. OpenAI's image model makes the starting frames; Kling animate
    creativity toward relevance (about 0.6). Small natural motion is the point; anything that
    zooms, morphs or "acts" is a retake.
 4. Download every result into `kling/raw/`. Names do not matter: `ingest.py` finds each
-   clip's frame by comparing its first frame with the 50 frames. If two eyes look alike and
+   clip's frame by comparing its first frame with the 55 frames. If two eyes look alike and
    it says "ambiguous", put the number in the name (`eye-07.mp4`).
 5. Run `python3 kling/ingest.py` (or ask Claude to). It is incremental: run it after
    each batch, it only does the new clips.
@@ -32,7 +32,7 @@ Grades to black and white (`hue=s=0`, grain is added in the browser), then ping-
 forward, then reverse, minus the duplicated end frames. A 10 s clip becomes a 20 s loop with
 no seam and no crossfade, the same trick as `tools/pingpong.sh`. Encodes H.264 High, 1080p
 max, CRF 24 capped at 3.5 Mbit/s (re-encodes harder if a clip passes 7 MB), faststart. The
-poster is the clip's first frame. Expect 3 to 6 MB a clip, about 250 MB for all 50.
+poster is the clip's first frame. Expect 3 to 6 MB a clip, about 275 MB for all 55.
 
 ## The page
 

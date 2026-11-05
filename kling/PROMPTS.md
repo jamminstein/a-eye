@@ -1,4 +1,4 @@
-# The 50 eyes: Kling motion prompts
+# The 55 eyes: Kling motion prompts
 
 Negative prompt (all clips):
 
@@ -303,3 +303,33 @@ A steady gaze. The pupil breathes with the light and the dark freckle on the iri
 *an Indian woman of about twenty-six with a small freckle on the nose bridge*
 
 The curtain shadow slides across the face with the breeze. Her eye follows nothing and stays on the lens. A slow blink as the light passes. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-51: Loupe (eye)
+
+*a Swiss watchmaker of about seventy-one with enormous wild white eyebrows*
+
+He holds still, absorbed, then slowly lifts his gaze from the work to the lens, the magnified iris sliding behind the glass. The pupil adjusts. A slow blink behind the loupe, the brow lowering to grip it in place. A tiny tremor in the old hand's shadow. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-52: Veil (eye)
+
+*a Slovenian beekeeper of about fifty-eight*
+
+The bee crawls slowly across the mesh and takes off, a blur. A thread of smoke drifts across the eye. She blinks slowly through the veil, calm. The pupil adjusts to a patch of sun. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-53: Greasepaint (eye)
+
+*a Black man of about fifty-five, a retired circus clown still in half make-up*
+
+He holds the gaze, still and tired. A slow blink that cracks the paint at the lid. The brow lifts a little and a flake of white drops. The bulbs flicker faintly. His eye softens. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-54: Eyepiece (eye)
+
+*an amateur astronomer in her mid thirties, Nigerian-British, with electric-blue dyed eyebrows growing out at the roots*
+
+The pupil stays wide; the tiny bright disc in the cornea wobbles and dims as the planet drifts. She lifts her eye from the eyepiece to the lens. A slow blink; dew shakes from the lashes. Her breath fogs the rubber cup. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.
+
+## eye-55: Furnace (macro)
+
+*a Czech glassblower of about forty-five, a woman with a singed eyebrow*
+
+Heat shimmer ripples the air in front of the face. The orange glow pulses; the pupil pinches small and opens as the glow fades. She squints harder, then relaxes, a bead of sweat running into the corner of the eye. A slow blink. Locked-off tripod macro shot, no zoom, no pan, no camera movement, natural skin micro-movement.

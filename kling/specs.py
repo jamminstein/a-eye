@@ -1,4 +1,4 @@
-"""The 50 eyes.
+"""The 55 eyes.
 
 Each spec has everything needed for two jobs:
 
@@ -60,8 +60,9 @@ KLING_NEGATIVE = (
 )
 
 # ---------------------------------------------------------------------- eyes
-# 27 macro, 23 eye. Every frame is a single eye (the first 34 were the original run; 35-50
-# were first made as both-eyes crops and redone as single eyes on request).
+# 28 macro, 27 eye. Every frame is a single eye (the first 34 were the original run; 35-50
+# were first made as both-eyes crops and redone as single eyes on request; 51-55 are the
+# eccentrics, added later).
 
 SPECS = [
     # ------------------------------------------------------------------ macro
@@ -694,9 +695,89 @@ SPECS = [
         motion="The curtain shadow slides across the face with the breeze. Her eye follows "
                "nothing and stays on the lens. A slow blink as the light passes.",
     ),
+    # ------------------------------------------------- eyes 51-55: the eccentrics
+    # People defined by what they do, with something physically in front of or on the eye.
+    dict(
+        name="Loupe", kind="eye", side="right",
+        who="a Swiss watchmaker of about seventy-one with enormous wild white eyebrows",
+        look="A jeweller's loupe screwed into the eye socket: its brass and black barrel fills the "
+             "edges of the picture and its lens magnifies the pale blue-grey iris and the lids behind "
+             "it, softening and slightly bending the periphery; thin pale lashes; liver spots on the "
+             "lid; white eyebrow hairs as long as fingers, some curling forward; deep furrows from a "
+             "lifetime of squinting; a few tiny brass filings on the skin.",
+        light="A bright adjustable bench lamp from the upper left; the front of the loupe mirrors it "
+              "as a hard oval highlight with a faint reflection of a watch movement on a dark bench; "
+              "a pinpoint of the lamp in the cornea.",
+        state="Looking into the lens through the loupe, absorbed, as if interrupted at his work.",
+        motion="He holds still, absorbed, then slowly lifts his gaze from the work to the lens, the "
+               "magnified iris sliding behind the glass. The pupil adjusts. A slow blink behind the "
+               "loupe, the brow lowering to grip it in place. A tiny tremor in the old hand's "
+               "shadow.",
+    ),
+    dict(
+        name="Veil", kind="eye", side="left",
+        who="a Slovenian beekeeper of about fifty-eight",
+        look="Seen through the fine black mesh of a beekeeper's veil: the mesh is a soft dark grid "
+             "in front of the lens, out of focus, except for one honeybee crawling on it, sharp, just "
+             "in front of the eye; hazel-green iris; sun-weathered skin with a faint amber propolis "
+             "stain on the cheek; a wisp of grey hair escaping under the veil; a drop of sweat at the "
+             "temple; a second bee walking on the brow.",
+        light="Bright summer meadow at midday, sun above and behind her, a thin thread of smoke "
+              "drifting past; the cornea mirrors a white sky and the dark shape of a stacked hive box.",
+        state="Looking into the lens through the mesh, calm and unhurried, not afraid of the bees.",
+        motion="The bee crawls slowly across the mesh and takes off, a blur. A thread of smoke "
+               "drifts across the eye. She blinks slowly through the veil, calm. The pupil adjusts "
+               "to a patch of sun.",
+    ),
+    dict(
+        name="Greasepaint", kind="eye", side="right",
+        who="a Black man of about fifty-five, a retired circus clown still in half make-up",
+        look="White greasepaint cracked in the creases of the lid and the crow's feet; a black "
+             "diamond painted over the brow and lid, worn and smeared; the start of a thick painted "
+             "red arc at the bottom edge of the picture; the paint shiny with sweat and streaked "
+             "below the eye; dark brown iris, red-rimmed and tired; real eyebrow hairs poking through "
+             "the white; a little greasepaint caught on the lashes.",
+        light="Backstage: a dressing-room mirror ringed with bare bulbs; the cornea mirrors a row of "
+              "small round bulbs; warm hard light from the left.",
+        state="Looking into the lens, tired and dignified, between shows.",
+        motion="He holds the gaze, still and tired. A slow blink that cracks the paint at the lid. "
+               "The brow lifts a little and a flake of white drops. The bulbs flicker faintly. His "
+               "eye softens.",
+    ),
+    dict(
+        name="Eyepiece", kind="eye", side="left",
+        who="an amateur astronomer in her mid thirties, Nigerian-British, with electric-blue dyed eyebrows growing out at the roots",
+        look="Her eye held a few centimetres from the black rubber eyecup of a telescope eyepiece, "
+             "which fills the lower right corner of the picture with a little of its metal barrel; "
+             "dark brown iris with the pupil opened wide in the dark; the blue brow dye patchy; "
+             "dew beaded on her lashes from the night air; her skin faintly ringed where the "
+             "rubber pressed it.",
+        light="A cold damp field at night: the only light is a dim red torch from below and to the "
+              "right, turning the skin deep red; the cornea mirrors a tiny bright disc of a planet "
+              "and one point of the red torch.",
+        state="Looking up into the lens from the eyepiece, as if the lens were the planet.",
+        motion="The pupil stays wide; the tiny bright disc in the cornea wobbles and dims as the "
+               "planet drifts. She lifts her eye from the eyepiece to the lens. A slow blink; dew "
+               "shakes from the lashes. Her breath fogs the rubber cup.",
+    ),
+    dict(
+        name="Furnace", kind="macro", side="right",
+        who="a Czech glassblower of about forty-five, a woman with a singed eyebrow",
+        look="Safety glasses pushed up onto the forehead, only their top rim visible; pale "
+             "grey-green iris; part of the eyebrow singed short and curled; a streak of soot on the "
+             "cheekbone; sweat running in the creases; the skin flushed and shiny; short sun-bleached "
+             "lashes, a few curled by heat; fine ash on the lid.",
+        light="Standing in front of the open glory-hole of a furnace: intense orange-white light "
+              "from the left, the other side of the face in deep shadow; the cornea mirrors a small "
+              "bright orange circle with a glowing gob of glass on a pipe in it; visible heat shimmer.",
+        state="Looking into the lens with a squint against the heat.",
+        motion="Heat shimmer ripples the air in front of the face. The orange glow pulses; the "
+               "pupil pinches small and opens as the glow fades. She squints harder, then relaxes, a "
+               "bead of sweat running into the corner of the eye. A slow blink.",
+    ),
 ]
 
-assert len(SPECS) == 50, len(SPECS)
+assert len(SPECS) == 55, len(SPECS)
 
 
 def ident(i):

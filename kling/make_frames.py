@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Make the starting frames for the 50 eyes with an OpenAI image model.
+"""Make the starting frames for the 55 eyes with an OpenAI image model.
 
     kling/make_frames.py --only 2,8,49 --model gpt-image-2 --out kling/pilot
-    kling/make_frames.py                       # all 50 into kling/frames
+    kling/make_frames.py                       # all 55 into kling/frames
 
 Standard library only. The key comes from the macOS Keychain (service
 openai-api-key), same as the openai-image MCP. Skips frames that already exist,
