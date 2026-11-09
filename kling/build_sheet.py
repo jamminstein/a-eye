@@ -8,6 +8,7 @@ Download frame and a done tick (remembered in the browser), in batches of five.
 Open it from Finder; it reads the frames from kling/frames/.
 """
 import html
+import re
 from pathlib import Path
 
 import specs
@@ -28,19 +29,30 @@ SETTINGS = [
 ]
 
 
+def clip_counts():
+    """How many clips of each eye are already on the site (clips/eye-07.mp4, eye-07b.mp4 ...)."""
+    out = {}
+    for p in (HERE.parent / "clips").glob("eye-*.mp4"):
+        base = re.match(r"(eye-\d+)", p.stem).group(1)
+        out[base] = out.get(base, 0) + 1
+    return out
+
+
 def esc(s):
     return html.escape(s, quote=True)
 
 
-def card(i, s):
+def card(i, s, have):
     ident = specs.ident(i)
+    n = have.get(ident, 0)
+    badge = f'<span class="onsite">on the site{" (" + str(n) + " clips)" if n > 1 else ""}</span>' if n else ""
     kp = specs.kling_prompt(s)
     fp = specs.frame_prompt(s)
     return f"""
-<article class="card" data-id="{ident}">
+<article class="card" data-id="{ident}" data-clips="{n}">
   <a class="frame" href="frames/{ident}.jpg" target="_blank" rel="noopener"><img loading="lazy" src="frames/{ident}.jpg" alt="{esc(s['name'])}"></a>
   <div class="body">
-    <header><span class="num">{i + 1:02d}</span><h3>{esc(s['name'])}</h3><span class="tag">{s['kind']}</span></header>
+    <header><span class="num">{i + 1:02d}</span><h3>{esc(s['name'])}</h3><span class="tag">{s['kind']}</span>{badge}</header>
     <p class="who">{esc(s['who'])}</p>
     <textarea readonly rows="6" spellcheck="false">{esc(kp)}</textarea>
     <div class="row">
@@ -55,10 +67,11 @@ def card(i, s):
 
 def build():
     out = []
+    have = clip_counts()
     for i, s in enumerate(specs.SPECS):
         if i % BATCH == 0:
             out.append(f'<h2 class="batch">Batch {i // BATCH + 1} <small>eyes {i + 1:02d}–{min(i + BATCH, len(specs.SPECS)):02d}</small></h2>')
-        out.append(card(i, s))
+        out.append(card(i, s, have))
     settings = "".join(f"<dt>{esc(k)}</dt><dd>{esc(v)}</dd>" for k, v in SETTINGS)
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -87,6 +100,7 @@ def build():
   header {{ display:flex; align-items:baseline; gap:10px }}
   .num {{ font-variant-numeric:tabular-nums; color:var(--mut) }}
   h3 {{ margin:0; font-size:17px }}
+  .onsite {{ font-size:12px; color:#1f8a4c; border:1px solid #1f8a4c; border-radius:99px; padding:1px 8px }}
   .tag {{ margin-left:auto; font-size:12px; color:var(--mut); border:1px solid var(--line); border-radius:99px; padding:1px 8px }}
   .who {{ color:var(--mut); margin:4px 0 8px; font-size:13px }}
   textarea {{ width:100%; resize:vertical; font:13px/1.45 ui-monospace,Menlo,monospace; background:var(--bg); color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:8px }}
@@ -106,7 +120,7 @@ def build():
   <textarea class="neg" id="neg" readonly rows="4" spellcheck="false">{esc(specs.KLING_NEGATIVE)}</textarea>
   <div class="row"><button type="button" id="copyneg">Copy negative prompt</button></div>
 </section>
-<div class="bar"><span><b id="count">0</b> / {len(specs.SPECS)} done</span><label><input type="checkbox" id="hide"> hide done</label></div>
+<div class="bar"><span><b id="count">0</b> / {len(specs.SPECS)} done (ticked, or already a clip on the site)</span><label><input type="checkbox" id="hide"> hide done</label></div>
 {"".join(out)}
 </main>
 <script>
@@ -122,9 +136,9 @@ def build():
   function refresh() {{
     var n = 0, hide = document.getElementById('hide').checked;
     document.querySelectorAll('.card').forEach(function (c) {{
-      var d = !!done[c.dataset.id]; if (d) n++;
+      var onsite = +c.dataset.clips > 0, d = onsite || !!done[c.dataset.id]; if (d) n++;
       c.classList.toggle('is-done', d); c.classList.toggle('is-hidden', d && hide);
-      c.querySelector('input[type=checkbox]').checked = d;
+      var box = c.querySelector('input[type=checkbox]'); box.checked = d; box.disabled = onsite;
     }});
     document.getElementById('count').textContent = n;
   }}

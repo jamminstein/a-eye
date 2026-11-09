@@ -142,15 +142,19 @@
   // ---- which eye ---------------------------------------------------------
   // The list is rewritten by kling/ingest.py. "classic" is the original
   // eye.mp4; any other id is clips/<id>.mp4 with clips/<id>.jpg as its poster.
-  var CLIPS = /*clips*/["classic"]/*end*/;
+  var CLIPS = /*clips*/["classic", "eye-01", "eye-01b", "eye-02", "eye-02b", "eye-05", "eye-05b", "eye-07", "eye-08", "eye-09", "eye-09b", "eye-12", "eye-13", "eye-15", "eye-18", "eye-25", "eye-29", "eye-34", "eye-35", "eye-38", "eye-41", "eye-46", "eye-47", "eye-48", "eye-49", "eye-53", "eye-56", "eye-59", "eye-60"]/*end*/;
 
   function srcOf(id)    { return id === 'classic' ? 'eye.mp4'    : 'clips/' + id + '.mp4'; }
   function posterOf(id) { return id === 'classic' ? 'poster.jpg' : 'clips/' + id + '.jpg'; }
 
-  // A shuffled bag kept in localStorage: every eye is shown once before any
-  // comes round again, and the first eye of a fresh bag is never the one just
-  // seen. Without storage (private windows) it falls back to a plain random
-  // pick. ?eye=eye-07 (or #eye-07) shows one particular eye and leaves the bag alone.
+  // eye-07b is a second take of eye-07: the same face. Treated as one eye when
+  // deciding what may follow what.
+  function baseOf(id) { return id.replace(/^(eye-\d+)[a-z]$/, '$1'); }
+
+  // A shuffled bag kept in localStorage: every clip is shown once before any
+  // comes round again, and no face follows itself. Without storage (private
+  // windows) it falls back to a plain random pick. ?eye=eye-07 (or #eye-07)
+  // shows one particular clip and leaves the bag alone.
   function pickEye() {
     var q = /[?&]eye=([\w-]+)/.exec(location.search) || /^#([\w-]+)$/.exec(location.hash);
     if (q && CLIPS.indexOf(q[1]) !== -1) return q[1];
@@ -162,8 +166,16 @@
       for (var i = bag.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1)), t = bag[i]; bag[i] = bag[j]; bag[j] = t;
       }
-      if (bag.length > 1 && bag[0] === st.last) {
-        var k = 1 + Math.floor(Math.random() * (bag.length - 1)), u = bag[0]; bag[0] = bag[k]; bag[k] = u;
+      // Never the same face twice running, across bags too: where a clip clashes with
+      // the one before it, swap it with the next clip that does not.
+      var prev = st.last;
+      for (var n = 0; n < bag.length; n++) {
+        if (prev && baseOf(bag[n]) === baseOf(prev)) {
+          for (var m = n + 1; m < bag.length; m++) {
+            if (baseOf(bag[m]) !== baseOf(prev)) { var s = bag[n]; bag[n] = bag[m]; bag[m] = s; break; }
+          }
+        }
+        prev = bag[n];
       }
     }
     var id = bag.shift();

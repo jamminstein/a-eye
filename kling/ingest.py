@@ -17,8 +17,8 @@ For each clip:
 
 Files whose names start with _ or . are ignored: put a _ in front of a take you do not want.
 
-Standard library + ffmpeg. Safe to re-run: clips that are already in clips/ are
-skipped (--force replaces them).
+Standard library + ffmpeg. Safe to re-run: files already ingested (clips/sources.json) are skipped, and a
+second take of the same frame is kept as its own clip (eye-07b), not dropped. --force re-encodes.
 """
 import argparse
 import json
@@ -128,8 +128,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("raw", nargs="?", default=str(HERE / "raw"))
     ap.add_argument("--force", action="store_true", help="replace clips already in clips/")
-    ap.add_argument("--crf", type=int, default=24)
-    ap.add_argument("--maxrate", default="3500k")
+    ap.add_argument("--crf", type=int, default=26)
+    ap.add_argument("--maxrate", default="3000k")
     ap.add_argument("--max-mb", type=float, default=7.0, help="re-encode harder above this size")
     ap.add_argument("--rebuild-manifest", action="store_true")
     ap.add_argument("--dry", action="store_true", help="only show what would be matched")
@@ -146,24 +146,34 @@ def main():
     if not files:
         raise SystemExit(f"no videos in {raw}")
 
-    done, skipped, unmatched = [], [], []
-    claimed = {}
+    ledger_path = CLIPS / "sources.json"  # "file name:size" -> clip id, so re-runs do not redo or duplicate
+    ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
+
+    def take_id(base, taken):
+        """eye-07 for the first take of a frame, then eye-07b, eye-07c ... for further takes."""
+        for suffix in [""] + list("bcdefghijklmnopqrstuvwxyz"):
+            cand = base + suffix
+            if cand not in taken and not (CLIPS / f"{cand}.mp4").exists():
+                return cand
+        raise SystemExit(f"too many takes of {base}")
+
+    done, unmatched, taken = [], [], set()
     for f in files:
+        key = f"{f.name}:{f.stat().st_size}"
+        cid = ledger.get(key)
+        if cid and (CLIPS / f"{cid}.mp4").exists() and not args.force:
+            print(f"=  {f.name}: already ingested as {cid}")
+            continue
         ident, how = match(f)
         if not ident:
             unmatched.append((f.name, how))
             print(f"?  {f.name}: {how}")
             continue
-        if ident in claimed:
-            skipped.append((f.name, f"second take of {ident} (first: {claimed[ident]})"))
-            print(f"=  {f.name}: second take of {ident}, skipped (rename one if you prefer it)")
-            continue
-        claimed[ident] = f.name
-        out = CLIPS / f"{ident}.mp4"
-        if out.exists() and not args.force:
-            print(f"=  {f.name} -> {ident}: already in clips/, skipped")
-            continue
-        print(f"-> {f.name} = {ident}  [{how}]", flush=True)
+        if not cid:  # --force on a known file re-encodes in place; anything else gets the next free take
+            cid = take_id(ident, taken)
+        taken.add(cid)
+        note = "" if cid == ident else "  (another take of this eye, kept as its own clip)"
+        print(f"-> {f.name} = {cid}  [{how}]{note}", flush=True)
         if args.dry:
             continue
         t0 = time.time()
@@ -179,19 +189,21 @@ def main():
                 crf += 3
             sh(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(tmp),
                 "-frames:v", "1", "-q:v", "5", str(Path(td) / "p.jpg")])
-            tmp.replace(out)
-            (Path(td) / "p.jpg").replace(CLIPS / f"{ident}.jpg")
-        done.append(ident)
-        print(f"   {w}x{h} {n} frames @ {fps} -> {2 * n - 2} frames, crf {crf}, {mb:.1f} MB, {time.time() - t0:.0f}s")
+            tmp.replace(CLIPS / f"{cid}.mp4")
+            (Path(td) / "p.jpg").replace(CLIPS / f"{cid}.jpg")
+        ledger[key] = cid
+        ledger_path.write_text(json.dumps(ledger, indent=1, sort_keys=True) + "\n")
+        done.append(cid)
+        print(f"   {w}x{h} {n} frames @ {fps} -> {2 * n - 2} frames, crf {crf}, {mb:.1f} MB, {time.time() - t0:.0f}s", flush=True)
 
     ids = write_manifest()
-    missing = [specs.ident(i) for i in range(len(specs.SPECS)) if specs.ident(i) not in ids]
-    print(f"\ningested {len(done)}; site now has classic + {len(ids)} Kling eyes ({len(ids) + 1} total)")
+    have = {re.match(r"(eye-\d+)", i).group(1) for i in ids}
+    missing = [specs.ident(i) for i in range(len(specs.SPECS)) if specs.ident(i) not in have]
+    print(f"\ningested {len(done)}; site now has classic + {len(ids)} Kling clips of {len(have)} different eyes ({len(ids) + 1} clips in the shuffle)")
     if unmatched:
         print(f"unmatched: {len(unmatched)}")
     if missing:
-        print(f"still missing ({len(missing)}): {', '.join(missing)}")
-
+        print(f"eyes with no clip yet ({len(missing)}): {', '.join(missing)}")
 
 if __name__ == "__main__":
     main()

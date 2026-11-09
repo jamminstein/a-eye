@@ -17,22 +17,27 @@ are made in Kling. OpenAI's image model makes the starting frames; Kling animate
 3. Settings that matter: Professional (1080p), 10 s, 16:9, camera movement none, sound off,
    creativity toward relevance (about 0.6). Small natural motion is the point; anything that
    zooms, morphs or "acts" is a retake.
-4. Download every result into `kling/raw/`. Names do not matter: `ingest.py` finds each
+4. Download every result into `kling/raw/` (or any folder: `ingest.py ~/Downloads/a-eye`). Names do not matter: `ingest.py` finds each
    clip's frame by comparing its first frame with the 60 frames. If two eyes look alike and
    it says "ambiguous", put the number in the name (`eye-07.mp4`).
 5. Run `python3 kling/ingest.py` (or ask Claude to). It is incremental: run it after
    each batch, it only does the new clips.
 
-Two takes of one frame: keep the one you like in `raw/`, put `_` in front of the other
-(`_take1.mp4`) and it is ignored. To swap a clip already ingested: `ingest.py --force`.
+Two takes of one frame are both kept: the second becomes `eye-07b`, its own clip in the
+shuffle (the page never shows the same face twice running). Do not want one? Put `_` in front
+of its file name before ingesting, or delete `clips/eye-07b.mp4` and `.jpg` and run
+`ingest.py --rebuild-manifest`. `clips/sources.json` remembers which file became which clip,
+so running ingest again on the same folder does nothing twice. To re-encode: `--force`.
+The sheet marks eyes that already have a clip ("on the site"), so "hide done" shows what is left.
 
 ## What ingest does to a clip
 
 Grades to black and white (`hue=s=0`, grain is added in the browser), then ping-pongs it:
-forward, then reverse, minus the duplicated end frames. A 10 s clip becomes a 20 s loop with
-no seam and no crossfade, the same trick as `tools/pingpong.sh`. Encodes H.264 High, 1080p
-max, CRF 24 capped at 3.5 Mbit/s (re-encodes harder if a clip passes 7 MB), faststart. The
-poster is the clip's first frame. Expect 3 to 6 MB a clip, about 300 MB for all 60.
+forward, then reverse, minus the duplicated end frames. A 15 s clip becomes a 30 s loop (10 s ones
+20 s) with no seam and no crossfade, the same trick as `tools/pingpong.sh`. Drops the audio. Encodes
+H.264 High, 1080p max, CRF 26 capped at 3 Mbit/s (re-encodes harder if a clip passes 7 MB),
+faststart. The poster is the clip's first frame. A 30 s loop is 5 MB on average (the first 28:
+161 MB), so about 350 MB for all 60 eyes. Nothing from the raw files (metadata, audio) is kept.
 
 ## The page
 
