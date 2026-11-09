@@ -55,7 +55,7 @@ reflections)**, 480p is found-footage, 360p mushes lashes and shadows.
 
 `masters/` (gitignored, 141 MB + the original) holds the clips as they were at 1080p / CRF 26, copied
 from commit 9ac4c88, so any look can be rebuilt from them without compounding losses. The raw Kling
-downloads are gone (Trash, then emptied?), so these masters are the best source there is. If masters/
+downloads were moved to the Trash on 2026-11-09 (gone once it is emptied), so these masters are the best source there is. If masters/
 is lost: `git show 9ac4c88:clips/eye-07.mp4 > kling/masters/eye-07.mp4` for each id (and
 `git show 9ac4c88:eye.mp4 > kling/masters/classic.mp4`). New batches from Kling are encoded at the
 look by ingest.py directly; keep their raw mp4s a while so the look can be changed later.
