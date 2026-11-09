@@ -145,7 +145,7 @@
   var CLIPS = /*clips*/["classic", "eye-01", "eye-01b", "eye-02", "eye-02b", "eye-05", "eye-05b", "eye-07", "eye-08", "eye-09", "eye-09b", "eye-12", "eye-13", "eye-15", "eye-18", "eye-25", "eye-29", "eye-34", "eye-35", "eye-38", "eye-41", "eye-46", "eye-47", "eye-48", "eye-49", "eye-53", "eye-56", "eye-59", "eye-60"]/*end*/;
 
   function srcOf(id)    { return id === 'classic' ? 'eye.mp4'    : 'clips/' + id + '.mp4'; }
-  function posterOf(id) { return id === 'classic' ? 'poster.jpg' : 'clips/' + id + '.jpg'; }
+  function posterOf(id) { return 'clips/' + id + '.jpg'; }  // poster.jpg stays the sharp link-preview image
 
   // eye-07b is a second take of eye-07: the same face. Treated as one eye when
   // deciding what may follow what.

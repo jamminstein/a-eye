@@ -37,6 +37,7 @@ import specs  # noqa: E402
 CLIPS = ROOT / "clips"
 FRAMES = HERE / "frames"
 INDEX = ROOT / "index.html"
+LOOK = json.loads((HERE / "look.json").read_text())  # height / crf / maxrate: how perfect the clips look
 GRADE = "hue=s=0"  # black and white, same as the original (grain is added in the browser)
 VIDEO_EXT = {".mp4", ".mov", ".m4v", ".webm"}
 W, H = 32, 18
@@ -98,10 +99,9 @@ def probe(path):
     return int(s["nb_read_frames"]), int(s["width"]), int(s["height"]), s["r_frame_rate"]
 
 
-def encode(src, dst, n, crf, maxrate):
+def encode(src, dst, n, crf, maxrate, height):
     last = n - 2
-    vf = (f"{GRADE},scale='min(1920,iw)':'min(1080,ih)':force_original_aspect_ratio=decrease:flags=lanczos,"
-          f"scale=trunc(iw/2)*2:trunc(ih/2)*2,split[a][b];"
+    vf = (f"{GRADE},scale=-2:'min({height},ih)':flags=bicubic,split[a][b];"
           f"[b]reverse,select='between(n,1,{last})',setpts=N/FRAME_RATE/TB[r];"
           f"[a][r]concat=n=2:v=1:a=0[v]")
     br = int(maxrate.rstrip("k"))
@@ -128,9 +128,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("raw", nargs="?", default=str(HERE / "raw"))
     ap.add_argument("--force", action="store_true", help="replace clips already in clips/")
-    ap.add_argument("--crf", type=int, default=26)
-    ap.add_argument("--maxrate", default="3000k")
-    ap.add_argument("--max-mb", type=float, default=7.0, help="re-encode harder above this size")
+    ap.add_argument("--height", type=int, default=LOOK["height"], help="output height; lower = softer, smaller")
+    ap.add_argument("--crf", type=int, default=LOOK["crf"])
+    ap.add_argument("--maxrate", default=LOOK["maxrate"])
+    ap.add_argument("--max-mb", type=float, default=LOOK["max_mb"], help="re-encode harder above this size")
     ap.add_argument("--rebuild-manifest", action="store_true")
     ap.add_argument("--dry", action="store_true", help="only show what would be matched")
     args = ap.parse_args()
@@ -182,11 +183,11 @@ def main():
             tmp = Path(td) / "out.mp4"
             crf = args.crf
             for _ in range(4):
-                encode(f, tmp, n, crf, args.maxrate)
+                encode(f, tmp, n, crf, args.maxrate, args.height)
                 mb = tmp.stat().st_size / 1e6
                 if mb <= args.max_mb:
                     break
-                crf += 3
+                crf += 2
             sh(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(tmp),
                 "-frames:v", "1", "-q:v", "5", str(Path(td) / "p.jpg")])
             tmp.replace(CLIPS / f"{cid}.mp4")
