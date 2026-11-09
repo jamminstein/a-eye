@@ -1,6 +1,6 @@
 {
-  "height": 540,
-  "crf": 32,
-  "maxrate": "900k",
-  "max_mb": 2.5
+  "height": 1080,
+  "crf": 26,
+  "maxrate": "3000k",
+  "max_mb": 7.0
 }
