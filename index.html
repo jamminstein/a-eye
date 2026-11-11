@@ -151,14 +151,15 @@
   // deciding what may follow what.
   function baseOf(id) { return id.replace(/^(eye-\d+)[a-z]$/, '$1'); }
 
-  // Three eyes are easter eggs and are left out of the shuffle: the cat-slit lens
+  // Five eyes are easter eggs and are left out of the shuffle: the cat-slit lens
   // (eye-60), the eye whose light swells and drains (eye-01, two takes of one
-  // face) and the retired clown in greasepaint (eye-53). The page counts visits
+  // face), the retired clown in greasepaint (eye-53), the luchador in his mask
+  // (eye-56) and the woman trying not to laugh (eye-46). The page counts visits
   // in localStorage. The first egg turns up a few
   // refreshes in (the 4th to 6th visit), then one every 15 to 30 visits, so it
   // stays a surprise. Without storage the refreshes cannot be counted, so no egg.
   // ?eye=eye-60 still shows one directly.
-  var RARE = ['eye-01', 'eye-01b', 'eye-53', 'eye-60'];
+  var RARE = ['eye-01', 'eye-01b', 'eye-46', 'eye-53', 'eye-56', 'eye-60'];
   var EGG_FIRST = [4, 6];     // the visit number of the first egg: anywhere in this range
   var EGG_GAP   = [15, 30];   // visits between one egg and the next
 
