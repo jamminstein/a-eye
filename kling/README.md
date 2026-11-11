@@ -70,6 +70,14 @@ load from a shuffled bag in localStorage: all eyes are shown once before any rep
 first of a fresh bag is never the one you just saw. `eye.mp4` is the original and stays in
 the bag as `classic`.
 
+**Easter eggs.** Two eyes are not in the shuffle: the cat-slit lens (`eye-60`) and the eye whose
+light swells and drains (`eye-01` and its second take `eye-01b`, one face). `index.html` counts
+visits in localStorage (`aeye.visits`); the first egg appears on the 4th to 6th visit, then one
+every 15 to 30 visits, each face once before either repeats (a random take of the bright one). No
+storage means no egg, since refreshes cannot be counted. `?eye=eye-60` still shows one directly and
+does not count. To change which eyes are eggs, edit `RARE` (and `EGG_FIRST`, `EGG_GAP`) in
+`index.html`; ingest only rewrites the clip list, never those.
+
     /?eye=eye-07    show that one (does not touch the bag)
     /#eye-07        same
 

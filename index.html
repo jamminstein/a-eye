@@ -151,35 +151,72 @@
   // deciding what may follow what.
   function baseOf(id) { return id.replace(/^(eye-\d+)[a-z]$/, '$1'); }
 
+  // Two eyes are easter eggs and are left out of the shuffle: the cat-slit lens
+  // (eye-60) and the eye whose light swells and drains (eye-01, two takes of one
+  // face). The page counts visits in localStorage. The first egg turns up a few
+  // refreshes in (the 4th to 6th visit), then one every 15 to 30 visits, so it
+  // stays a surprise. Without storage the refreshes cannot be counted, so no egg.
+  // ?eye=eye-60 still shows one directly.
+  var RARE = ['eye-01', 'eye-01b', 'eye-60'];
+  var EGG_FIRST = [4, 6];     // the visit number of the first egg: anywhere in this range
+  var EGG_GAP   = [15, 30];   // visits between one egg and the next
+
+  function between(lo, hi) { return lo + Math.floor(Math.random() * (hi - lo + 1)); }
+
+  // A fresh shuffle of the pool in which no face follows itself, including the
+  // face of the clip shown just before (prev). It reshuffles until that holds, which
+  // takes a handful of tries; patching a clash by swapping can leave one at the end.
+  function shuffled(pool, prev) {
+    var bag;
+    for (var tries = 0; tries < 80; tries++) {
+      bag = pool.slice();
+      for (var i = bag.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1)), t = bag[i]; bag[i] = bag[j]; bag[j] = t;
+      }
+      var clash = false, last = prev;
+      for (var n = 0; n < bag.length && !clash; n++) {
+        if (last && baseOf(bag[n]) === baseOf(last)) clash = true;
+        last = bag[n];
+      }
+      if (!clash) break;
+    }
+    return bag;
+  }
+
   // A shuffled bag kept in localStorage: every clip is shown once before any
   // comes round again, and no face follows itself. Without storage (private
   // windows) it falls back to a plain random pick. ?eye=eye-07 (or #eye-07)
-  // shows one particular clip and leaves the bag alone.
+  // shows one particular clip and leaves the bag, and the visit count, alone.
   function pickEye() {
     var q = /[?&]eye=([\w-]+)/.exec(location.search) || /^#([\w-]+)$/.exec(location.hash);
     if (q && CLIPS.indexOf(q[1]) !== -1) return q[1];
     var st = {};
     try { st = JSON.parse(localStorage.getItem('aeye') || '{}') || {}; } catch (e) {}
-    var bag = (st.bag || []).filter(function (id) { return CLIPS.indexOf(id) !== -1; });
-    if (!bag.length) {
-      bag = CLIPS.slice();
-      for (var i = bag.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1)), t = bag[i]; bag[i] = bag[j]; bag[j] = t;
-      }
-      // Never the same face twice running, across bags too: where a clip clashes with
-      // the one before it, swap it with the next clip that does not.
-      var prev = st.last;
-      for (var n = 0; n < bag.length; n++) {
-        if (prev && baseOf(bag[n]) === baseOf(prev)) {
-          for (var m = n + 1; m < bag.length; m++) {
-            if (baseOf(bag[m]) !== baseOf(prev)) { var s = bag[n]; bag[n] = bag[m]; bag[m] = s; break; }
-          }
-        }
-        prev = bag[n];
-      }
+    var pool = CLIPS.filter(function (id) { return RARE.indexOf(id) === -1; });
+    var eggs = RARE.filter(function (id) { return CLIPS.indexOf(id) !== -1; });
+    var visits = (+st.visits || 0) + 1;
+    var eggAt = +st.eggAt || between(EGG_FIRST[0], EGG_FIRST[1]);
+    var eggSeen = st.eggSeen || [];
+    var bag = (st.bag || []).filter(function (id) { return pool.indexOf(id) !== -1; });
+    var id;
+    if (eggs.length && visits >= eggAt) {
+      // An egg: each face once before either comes round again, a random take of it.
+      var faces = [];
+      eggs.forEach(function (r) { var f = baseOf(r); if (faces.indexOf(f) === -1) faces.push(f); });
+      var left = faces.filter(function (f) { return eggSeen.indexOf(f) === -1; });
+      if (!left.length) { left = faces; eggSeen = []; }
+      var face = left[Math.floor(Math.random() * left.length)];
+      var takes = eggs.filter(function (r) { return baseOf(r) === face; });
+      id = takes[Math.floor(Math.random() * takes.length)];
+      eggSeen.push(face);
+      eggAt = visits + between(EGG_GAP[0], EGG_GAP[1]);
+    } else {
+      if (!bag.length) bag = shuffled(pool, st.last);
+      id = bag.shift();
     }
-    var id = bag.shift();
-    try { localStorage.setItem('aeye', JSON.stringify({ bag: bag, last: id })); } catch (e) {}
+    try {
+      localStorage.setItem('aeye', JSON.stringify({ bag: bag, last: id, visits: visits, eggAt: eggAt, eggSeen: eggSeen }));
+    } catch (e) {}
     return id;
   }
 
